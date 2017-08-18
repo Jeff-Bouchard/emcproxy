@@ -15,8 +15,18 @@ class Emc {
     private $allowed_commands = [
         'name_show',
         'name_list',
+        'name_new',
+        'name_delete',
+        'name_update',
+        'getnewaddress',
+        'dumpprivkey',
+        'getblockchaininfo',
+        'getinfo',
     ];
 
+    /**
+     * Emc constructor.
+     */
     public function __construct()
     {
         $this->host = 'host';
@@ -27,20 +37,27 @@ class Emc {
         $this->connect = "$this->protocol://$this->username:$this->password@$this->host:$this->port'";
     }
 
+    /**
+     * @param $method
+     * @param array $params
+     * @return bool|mixed|string
+     * @throws Exception
+     */
     public function request($method, $params = [])
     {
-        if (!in_array($method, $this->allowed_commands)){
+        if (!in_array($method, $this->allowed_commands)) {
             $command_error = true;
         }
 
-        if(isset($command_error) && $command_error === true) {
+        if (isset($command_error) && $command_error === true) {
             throw new Exception('Method not allowed', 405);
         }
 
         foreach ($params as $param) {
             $p[] = is_numeric($param) ? (int)$param : $param;
         }
-        if(!isset($p)) {
+        
+        if (!isset($p)) {
             $p = $params;
         }
 
@@ -72,15 +89,17 @@ class Emc {
             throw new Exception('Bad Gateway', 502);
         }
 
+
         return $response;
     }
 }
 
-try {
-    if($_POST) {
-        $post = $_POST;
-        $params = [];
 
+try {
+    if(file_get_contents('php://input')) {
+        $post = json_decode(file_get_contents('php://input'), true);
+
+        $params = [];
         if($post['params']) {
             $params = $post['params'];
         }
