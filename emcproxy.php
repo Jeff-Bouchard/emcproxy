@@ -13,7 +13,33 @@ class Emc {
     private $password;
     private $connect;
     private $allowed_commands = [
-        'name_show'
+        'getbestblockhash',
+        'getblock',
+        'getblockchaininfo',
+        'getblockcount',
+        'getblockhash',
+        'getchaintips',
+        'getdifficulty',
+        'getmempoolinfo',
+        'getrawmempool',
+        'gettxlistfor',
+        'gettxout',
+        'gettxoutsetinfo',
+        'name_filter',
+        'name_history',
+        'name_mempool',
+        'name_scan',
+        'name_show',
+        'verifychain',
+        'getcheckpoint',
+        'createrawtransaction',
+        'decoderawtransaction',
+        'decodescript',
+        'getrawtransaction',
+        'sendrawtransaction',
+        'signrawtransaction',
+        'validateaddress',
+        'verifymessage',
     ];
 
     /**
