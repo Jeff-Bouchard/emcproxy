@@ -13,15 +13,7 @@ class Emc {
     private $password;
     private $connect;
     private $allowed_commands = [
-        'name_show',
-        'name_list',
-        'name_new',
-        'name_delete',
-        'name_update',
-        'getnewaddress',
-        'dumpprivkey',
-        'getblockchaininfo',
-        'getinfo',
+        'name_show'
     ];
 
     /**
@@ -88,7 +80,6 @@ class Emc {
         if($response == null) {
             throw new Exception('Bad Gateway', 502);
         }
-
 
         return $response;
     }
