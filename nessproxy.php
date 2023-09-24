@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Access-Control-Allow-Credentials: true');
 
-class Emc {
+class Ness {
     private $host;
     private $port;
     private $protocol;
@@ -13,52 +13,49 @@ class Emc {
     private $password;
     private $connect;
     private $allowed_commands = [
-        'getbestblockhash',
         'AddPrivateKey        //  Add a private key to wallet',
         'AddressBalance        // Check the balance of specific addresses',
-         addressGen           //  Generate skycoin or bitcoin addresses types
-         addressOutputs         Display outputs of specific addresses
-         AddressTransactions   // Show detail for transaction associated with one or more specified addresses
-         Addresscount        //  Get the count of addresses with unspent outputs (coins)
-         Blocks               //  Lists the content of a single block or a range of blocks
-         broadcastTransaction   Broadcast a raw transaction to the network
+        'addressGen           //  Generate skycoin or bitcoin addresses types',
+        'addressOutputs         Display outputs of specific addresses',
+        'AddressTransactions   // Show detail for transaction associated with one or more specified addresses',
+        'Addresscount        //  Get the count of addresses with unspent outputs (coins)',
+        'Blocks               //  Lists the content of a single block or a range of blocks',
+        'broadcastTransaction   Broadcast a raw transaction to the network',
+         
+        'CreateRawTransaction  // Create a raw transaction that can be broadcast to the network later',
+        'CreateRawTransactionV2 // Create a raw transaction that can be broadcast to the network later',
+        'DecodeRawTransaction  // Decode raw transaction',
+             
+        'EncodeJsonTransaction // Encode JSON transaction',
        
        
-         CreateRawTransaction  // Create a raw transaction that can be broadcast to the network later
-         CreateRawTransactionV2 // Create a raw transaction that can be broadcast to the network later
-         DecodeRawTransaction  // Decode raw transaction
-       
-       
-         EncodeJsonTransaction // Encode JSON transaction
-       
-       
-         Help                 //  Help about any command
-         LastBlocks          //   Displays the content of the most recently N generated blocks
-         ListAddresses        //  Lists all addresses in a given wallet
-         ListWallets           // Lists all wallets stored in the wallet directory
-         PendingTransactions   // Get all unconfirmed transactions
-         Richlist              // Get skycoin richlist
-         Send                // Send skycoin from a wallet or an address to a recipient address
-         ShowConfig           //  Show cli configuration
-         ShowSeed             //  Show wallet seed and seed passphrase
-         SignTransaction       // Sign an unsigned transaction with specific wallet
-         Status               //  Check the status of current Skycoin node
-         Transaction           // Show detail info of specific transaction
-         verifyAddress         // Verify a privateness address
-         VerifyTransaction    //  Verify if the specific transaction is spendable
-         Version              //  List the current version of Skycoin components
-         WalletAddAddresses    // Generate additional addresses for a deterministic, bip44 or xpub wallet
-         WalletBalance         // Check the balance of a wallet
-         WalletCreate         //  Create a new wallet
-         WalletCreateTemp      // Create a new temporary wallet
-         WalletHistory        //  Display the transaction history of specific wallet. Requires skycoin node rpc.
-         WalletKeyExport       // Export a specific key from an HD wallet
-         WalletOutputs         // Display outputs of specific wallet
+         'Help                 //  Help about any command',
+         'LastBlocks          //   Displays the content of the most recently N generated blocks',
+         'ListAddresses        //  Lists all addresses in a given wallet',
+         'ListWallets           // Lists all wallets stored in the wallet directory',
+         'PendingTransactions   // Get all unconfirmed transactions',
+         'Richlist              // Get skycoin richlist',
+         'Send                // Send skycoin from a wallet or an address to a recipient address',
+         'ShowConfig           //  Show cli configuration',
+         'ShowSeed             //  Show wallet seed and seed passphrase',
+         'SignTransaction       // Sign an unsigned transaction with specific wallet',
+         'Status               //  Check the status of current Privateness node',
+         'Transaction           // Show detail info of specific transaction',
+         'verifyAddress         // Verify a privateness address',
+         'VerifyTransaction    //  Verify if the specific transaction is spendable',
+         'Version              //  List the current version of Privateness components',
+         'WalletAddAddresses    // Generate additional addresses for a deterministic, bip44 or xpub wallet',
+         'WalletBalance         // Check the balance of a wallet',
+         'WalletCreate         //  Create a new wallet',
+         'WalletCreateTemp      // Create a new temporary wallet',
+         'WalletHistory        //  Display the transaction history of specific wallet. Requires skycoin node rpc.',
+         'WalletKeyExport       // Export a specific key from an HD wallet',
+         'WalletOutputs         // Display outputs of specific wallet',
        
     ];
 
     /**
-     * Emc constructor.
+     * Ness constructor.
      */
     public function __construct()
     {
