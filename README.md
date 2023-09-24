@@ -1,2 +1,2 @@
 # emcproxy
-Middleware for Emercoin core
+PHP Proxies for Emercoin core (EMC) & Privateness (NESS/NCH)
